@@ -54,6 +54,29 @@ spawn(function()
     end
 end)
 
+-- Botão "Tirar pump do banco"
+local RetirarPumpBtn = Instance.new("TextButton")
+RetirarPumpBtn.Size = UDim2.new(0, 200, 0, 35)
+RetirarPumpBtn.Position = UDim2.new(0, 10, 0, 50)
+RetirarPumpBtn.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+RetirarPumpBtn.TextColor3 = Color3.new(1, 1, 1)
+RetirarPumpBtn.Font = Enum.Font.GothamBold
+RetirarPumpBtn.TextSize = 16
+RetirarPumpBtn.Text = "Tirar pump do banco"
+RetirarPumpBtn.Parent = Frame
+
+local retirarBtnCorner = Instance.new("UICorner", RetirarPumpBtn)
+retirarBtnCorner.CornerRadius = UDim.new(0, 8)
+
+RetirarPumpBtn.MouseButton1Click:Connect(function()
+    local args = {
+        "Slot2", -- ou "Slot1" conforme desejar
+        true,
+        1 -- quantidade para tirar do banco
+    }
+    game:GetService("ReplicatedStorage"):WaitForChild("Bank"):FireServer(unpack(args))
+end)
+
 -- Accept Button
 local AcceptBtn = Instance.new("TextButton")
 AcceptBtn.Size = UDim2.new(0, 100, 0, 40)
